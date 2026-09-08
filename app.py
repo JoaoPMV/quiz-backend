@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 from models.user import db
@@ -13,7 +14,8 @@ app.register_blueprint(question_bp)
 CORS(
     app,
     resources={r"/api/*": {"origins": ["http://localhost:5173",
-                                       "http://192.168.1.4:5173",]}},
+                                       "http://192.168.1.4:5173",
+                                        os.getenv("FRONTEND_URL")]}},
     methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["Content-Type", "Authorization"],
     supports_credentials=False,
