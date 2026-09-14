@@ -8,7 +8,7 @@ class Question(db.Model):
     alternatives = db.Column(db.JSON, nullable=False)  
     correct_answer = db.Column(db.String(50), nullable=False)  
     level = db.Column(db.String(10), nullable=False)        
-    content = db.Column(db.String(10), nullable=False)      
+    content = db.Column(db.String(50), nullable=False)      
     explanation = db.Column(db.Text, nullable=False)
 
     def to_dict(self):
