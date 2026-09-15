@@ -32,6 +32,9 @@ def authenticate_user(email, password):
     if not check_password_hash(user.password, password):
         return None
 
+    user.last_login = datetime.datetime.utcnow()
+    db.session.commit()
+
     token = jwt.encode(
         {
             "user_id": user.id,
